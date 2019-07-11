@@ -6,8 +6,8 @@ def get_destination_index(destination):
   destination_index = destinations.index(destination)
   return destination_index
 
-print(get_destination_index("Los Angeles, USA"))
-print(get_destination_index("Paris, France"))
+#print(get_destination_index("Los Angeles, USA"))
+#print(get_destination_index("Paris, France"))
 #print(get_destination_index("Hyderabad, India"))
 
 def get_traveler_location(traveler):
@@ -17,11 +17,11 @@ def get_traveler_location(traveler):
 
 test_destination_index = get_traveler_location(test_traveler)
 
-print(test_destination_index)
+#print(test_destination_index)
   
 attractions = [[] for destination in destinations]
 
-print(attractions)
+#print(attractions)
   
 def add_attraction(destination, attraction):
   try:
@@ -43,7 +43,7 @@ add_attraction("So Paulo, Brazil", ["So Paulo Zoo", ["zoo"]])
 add_attraction("So Paulo, Brazil", ["Ptio do Colgio", ["historical site"]])
 add_attraction("Cairo, Egypt", ["Pyramids of Giza", ["monument", "historical site"]])
 add_attraction("Cairo, Egypt", ["Egyptian Museum", ["museum"]])
-print (attractions)
+#print (attractions)
 
 def find_attractions(destination, interests):
   destination_index = get_destination_index(destination)
@@ -58,7 +58,24 @@ def find_attractions(destination, interests):
   return attractions_with_interest
         
 la_arts = find_attractions("Los Angeles, USA", ['art'])
-print(la_arts)
+#print(la_arts)
+
+def get_attractions_for_traveler(traveler):
+  traveler_destination, traveler_interests = traveler[1], traveler[2]
+  traveler_attractions = find_attractions(traveler_destination, traveler_interests)
+  interests_string = "Hi " + traveler[0] + ", we think you'll like these places around "
+  
+  for attraction in traveler_attractions:
+    interests_string += attraction
+    if attraction != traveler_attractions[-1]:
+      interests_string += ', '
+    else:
+      interests_string += '. '
+  return interests_string
+
+smills_france = get_attractions_for_traveler(['Dereck Smill', 'Paris, France', ['monument']])
+print(smills_france)
+
         
     
     
